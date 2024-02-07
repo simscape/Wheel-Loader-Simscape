@@ -17,7 +17,7 @@ a hydromechanical model of the CVT, powertrain, and linkage.
 Open the project file Wheel_Loader_Simscape.prj to get started.
 
 View on File Exchange: [![View Wheel Loader Design with Simscape on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/159126-wheel-loader-design-with-simscape)  
-You can also open in MATLAB Online: [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=simscape/Wheel-Loader-Design-Simscape&project=Wheel_Loader_Simscape.prj)
+You can also open in MATLAB Online: [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=simscape/Wheel-Loader-Simscape&project=Wheel_Loader_Simscape.prj)
 
 ## **Wheel Loader Animation Clip**
 ![](Scripts_Data/Overview/Wheel_Loader_Terrain_Bucket_Load_GIF.gif)
