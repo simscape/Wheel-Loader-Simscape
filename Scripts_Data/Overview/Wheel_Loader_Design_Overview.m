@@ -10,6 +10,10 @@
 % * *Integrated testing of physical system and controller* is supported by
 % a hydromechanical model of the CVT, powertrain, and linkage.
 %
+%
+% Copyright 2023-2024 The MathWorks, Inc.
+
+%%
 % *Complete Wheel Loader Model*
 % 
 % # Wheel Loader with Power Split CVT: <matlab:open_system('sm_wheel_loader') Model>, <matlab:web('sm_wheel_loader.html') Documentation>
@@ -21,10 +25,11 @@
 % # Power Split CVT with Four Speed Ranges (Multibody): <matlab:open_system('sm_cvt_power_split_pg_4range') Model>, <matlab:web('sm_cvt_power_split_pg_4range.html') Documentation>
 % # Power Split Planetary Gear (Multibody): <matlab:open_system('sm_cvt_power_split_pg') Model>, <matlab:web('sm_cvt_power_split_pg.html') Documentation>
 %
-% *Vehicle and Linkage Models*
+% *Vehicle, Linkage, and Steering Models*
 % 
 % # Wheel Loader Chassis, Drivetrain, and Linkage: <matlab:open_system('sm_wheel_loader_vehicle') Model>, <matlab:web('sm_wheel_loader_vehicle.html') Documentation>
 % # Wheel Loader Linkage: <matlab:open_system('sm_wheel_loader_linkage') Model>, <matlab:web('sm_wheel_loader_linkage.html') Documentation>
+% # Wheel Loader Steering: <matlab:open_system('sm_wheel_loader_steer') Model>, <matlab:web('sm_wheel_loader_steer.html') Documentation>
 %
 % *Driveline Test Models*
 %
@@ -43,4 +48,3 @@
 % # Terrain Definition from STL: <matlab:web('wheel_loader_surface_terrain.html') Documentation>
 % # Tire Point Cloud from STL: <matlab:web('wheel_loader_point_cloud_tire.html') Documentation>
 
-% Copyright 2023-2024 The MathWorks(TM), Inc.

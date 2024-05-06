@@ -1,4 +1,4 @@
-%% Hydromechanical Power Split CVT with Engine
+%% Hydromechanical Power Split CVT
 % 
 % This example models a continuously variable transmission (CVT) using
 % three different methods.  An abstract option models the CVT as a variable
@@ -128,7 +128,8 @@ set_param(bdroot,'SimulationCommand','update')
 
 %%
 sim('ssc_hydromech_power_split_cvt');
-ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt.Vehicle.Tires_and_Body,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot3torque(simlog_ssc_hydromech_power_split_cvt)
 ssc_hydromech_power_split_cvt_plot2pressure(simlog_ssc_hydromech_power_split_cvt.Transmission)
 sm_wheel_loader_plot3clutches(simlog_ssc_hydromech_power_split_cvt.Transmission)
 
@@ -151,7 +152,8 @@ set_param(bdroot,'SimulationCommand','update')
 
 %%
 sim('ssc_hydromech_power_split_cvt');
-ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt.Vehicle.Tires_and_Body,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot3torque(simlog_ssc_hydromech_power_split_cvt)
 ssc_hydromech_power_split_cvt_plot2pressure(simlog_ssc_hydromech_power_split_cvt.Transmission)
 sm_wheel_loader_plot3clutches(simlog_ssc_hydromech_power_split_cvt.Transmission)
 
@@ -171,7 +173,8 @@ set_param([bdroot '/Transmission'],'LabelModeActiveChoice','Power_Split_HM')
 
 %%
 sim('ssc_hydromech_power_split_cvt');
-ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt.Vehicle.Tires_and_Body,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot3torque(simlog_ssc_hydromech_power_split_cvt)
 ssc_hydromech_power_split_cvt_plot2pressure(simlog_ssc_hydromech_power_split_cvt.Transmission)
 sm_wheel_loader_plot3clutches(simlog_ssc_hydromech_power_split_cvt.Transmission)
 

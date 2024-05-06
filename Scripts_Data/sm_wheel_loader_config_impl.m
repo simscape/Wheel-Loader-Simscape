@@ -14,14 +14,18 @@ switch(lower(impl))
     case 'bucket'
         set_param(blkpth_inp,'popup_impl','Bucket');
         set_param(blkpth_veh,'popup_impl','Bucket');
+        evalin('base','testInput.Active = testInput.BucketYCycle;')
     case 'bucket load'
         set_param(blkpth_inp,'popup_impl','Bucket');
         set_param(blkpth_veh,'popup_impl','Bucket Load');
+        evalin('base','testInput.Active = testInput.BucketYCycle;')
     case 'grapple none'
         set_param(blkpth_inp,'popup_impl','Grapple');
         set_param(blkpth_veh,'popup_impl','Grapple');
+        evalin('base','testInput.Active = testInput.GrappleLogCycle;')
     case 'grapple log'
         set_param(blkpth_inp,'popup_impl','Grapple');
         set_param(blkpth_veh,'popup_impl','Grapple Log');
+        evalin('base','testInput.Active = testInput.GrappleLogCycle;')
 end
         

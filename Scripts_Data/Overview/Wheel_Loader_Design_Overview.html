@@ -1,12 +1,17 @@
-
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-   <!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Wheel Loader Design with Simscape&#8482;</title><meta name="generator" content="MATLAB 9.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-12-23"><meta name="DC.source" content="Wheel_Loader_Design_Overview.m"><style type="text/css">
+      -->
+<title>Wheel Loader Design with Simscape&trade;</title>
+<meta name="generator" content="MATLAB 24.1">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-04-22">
+<meta name="DC.source" content="Wheel_Loader_Design_Overview.m">
+<style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +72,99 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Wheel Loader Design with Simscape&#8482;</h1><p><img vspace="5" hspace="5" src="Wheel_Loader_Design_Overview.png" alt=""> </p><p>This repository contains models and code to help engineers design wheel loaders.</p><div><ul><li><b>Early-stage physical design</b> is supported by calculating ratios for geartrains and hydrostatic transmissions to achieve desired speed ranges.</li><li><b>Integrated testing of physical system and controller</b> is supported by a hydromechanical model of the CVT, powertrain, and linkage.</li></ul></div><p><b>Complete Wheel Loader Model</b></p><div><ol><li>Wheel Loader with Power Split CVT: <a href="matlab:open_system('sm_wheel_loader')">Model</a>, <a href="matlab:web('sm_wheel_loader.html')">Documentation</a></li></ol></div><p><b>CVT Test Models</b></p><div><ol><li>Hydromechanical Power Split CVT: <a href="matlab:open_system('ssc_hydromech_power_split_cvt')">Model</a>, <a href="matlab:web('ssc_hydromech_power_split_cvt.html')">Documentation</a></li><li>Hydromechanical Power Split CVT with Engine: <a href="matlab:open_system('ssc_hydromech_power_split_cvt_engine')">Model</a>, <a href="matlab:web('ssc_hydromech_power_split_cvt_engine.html')">Documentation</a></li><li>Power Split CVT with Four Speed Ranges (Multibody): <a href="matlab:open_system('sm_cvt_power_split_pg_4range')">Model</a>, <a href="matlab:web('sm_cvt_power_split_pg_4range.html')">Documentation</a></li><li>Power Split Planetary Gear (Multibody): <a href="matlab:open_system('sm_cvt_power_split_pg')">Model</a>, <a href="matlab:web('sm_cvt_power_split_pg.html')">Documentation</a></li></ol></div><p><b>Vehicle and Linkage Models</b></p><div><ol><li>Wheel Loader Chassis, Drivetrain, and Linkage: <a href="matlab:open_system('sm_wheel_loader_vehicle')">Model</a>, <a href="matlab:web('sm_wheel_loader_vehicle.html')">Documentation</a></li><li>Wheel Loader Linkage: <a href="matlab:open_system('sm_wheel_loader_linkage')">Model</a>, <a href="matlab:web('sm_wheel_loader_linkage.html')">Documentation</a></li></ol></div><p><b>Driveline Test Models</b></p><div><ol><li>Differential Front: <a href="matlab:open_system('sm_wheel_loader_diff_f')">Model</a>, <a href="matlab:web('sm_wheel_loader_diff_f.html')">Documentation</a></li><li>Differential Rear: <a href="matlab:open_system('sm_wheel_loader_diff_r')">Model</a>, <a href="matlab:web('sm_wheel_loader_diff_r.html')">Documentation</a></li><li>Axle Front: <a href="matlab:open_system('sm_wheel_loader_drive_f')">Model</a>, <a href="matlab:web('sm_wheel_loader_drive_f.html')">Documentation</a></li><li>Axle Rear: <a href="matlab:open_system('sm_wheel_loader_drive_r')">Model</a>, <a href="matlab:web('sm_wheel_loader_drive_r.html')">Documentation</a></li><li>Driveline Joint: <a href="matlab:open_system('sm_wheel_loader_driveline')">Model</a>, <a href="matlab:web('sm_wheel_loader_driveline.html')">Documentation</a></li><li>Planetary Gear Wheel Hub: <a href="matlab:open_system('sm_wheel_loader_planetary_gear')">Model</a>, <a href="matlab:web('sm_wheel_loader_planetary_gear.html')">Documentation</a></li></ol></div><p><b>Workflows</b></p><div><ol><li>Power Split CVT Design: <a href="matlab:web('optim_cvt_power_split_design.html')">Documentation</a>, <a href="matlab:run('CVT_Calculate_Swash_Control_app_run.m');">MATLAB App</a></li><li>Terrain Definition from STL: <a href="matlab:web('wheel_loader_surface_terrain.html')">Documentation</a></li><li>Tire Point Cloud from STL: <a href="matlab:web('wheel_loader_point_cloud_tire.html')">Documentation</a></li></ol></div><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023a</a><br></p></div><!--
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Wheel Loader Design with Simscape&trade;</h1>
+<!--introduction-->
+<p>
+<img vspace="5" hspace="5" src="Wheel_Loader_Design_Overview.png" alt=""> </p>
+<p>This repository contains models and code to help engineers design wheel loaders.</p>
+<div>
+<ul>
+<li>
+<b>Early-stage physical design</b> is supported by calculating ratios for geartrains and hydrostatic transmissions to achieve desired speed ranges.</li>
+<li>
+<b>Integrated testing of physical system and controller</b> is supported by a hydromechanical model of the CVT, powertrain, and linkage.</li>
+</ul>
+</div>
+<!--/introduction-->
+<p>
+<b>Complete Wheel Loader Model</b>
+</p>
+<div>
+<ol>
+<li>Wheel Loader with Power Split CVT: <a href="matlab:open_system('sm_wheel_loader')">Model</a>, <a href="matlab:web('sm_wheel_loader.html')">Documentation</a>
+</li>
+</ol>
+</div>
+<p>
+<b>CVT Test Models</b>
+</p>
+<div>
+<ol>
+<li>Hydromechanical Power Split CVT: <a href="matlab:open_system('ssc_hydromech_power_split_cvt')">Model</a>, <a href="matlab:web('ssc_hydromech_power_split_cvt.html')">Documentation</a>
+</li>
+<li>Hydromechanical Power Split CVT with Engine: <a href="matlab:open_system('ssc_hydromech_power_split_cvt_engine')">Model</a>, <a href="matlab:web('ssc_hydromech_power_split_cvt_engine.html')">Documentation</a>
+</li>
+<li>Power Split CVT with Four Speed Ranges (Multibody): <a href="matlab:open_system('sm_cvt_power_split_pg_4range')">Model</a>, <a href="matlab:web('sm_cvt_power_split_pg_4range.html')">Documentation</a>
+</li>
+<li>Power Split Planetary Gear (Multibody): <a href="matlab:open_system('sm_cvt_power_split_pg')">Model</a>, <a href="matlab:web('sm_cvt_power_split_pg.html')">Documentation</a>
+</li>
+</ol>
+</div>
+<p>
+<b>Vehicle, Linkage, and Steering Models</b>
+</p>
+<div>
+<ol>
+<li>Wheel Loader Chassis, Drivetrain, and Linkage: <a href="matlab:open_system('sm_wheel_loader_vehicle')">Model</a>, <a href="matlab:web('sm_wheel_loader_vehicle.html')">Documentation</a>
+</li>
+<li>Wheel Loader Linkage: <a href="matlab:open_system('sm_wheel_loader_linkage')">Model</a>, <a href="matlab:web('sm_wheel_loader_linkage.html')">Documentation</a>
+</li>
+<li>Wheel Loader Steering: <a href="matlab:open_system('sm_wheel_loader_steer')">Model</a>, <a href="matlab:web('sm_wheel_loader_steer.html')">Documentation</a>
+</li>
+</ol>
+</div>
+<p>
+<b>Driveline Test Models</b>
+</p>
+<div>
+<ol>
+<li>Differential Front: <a href="matlab:open_system('sm_wheel_loader_diff_f')">Model</a>, <a href="matlab:web('sm_wheel_loader_diff_f.html')">Documentation</a>
+</li>
+<li>Differential Rear: <a href="matlab:open_system('sm_wheel_loader_diff_r')">Model</a>, <a href="matlab:web('sm_wheel_loader_diff_r.html')">Documentation</a>
+</li>
+<li>Axle Front: <a href="matlab:open_system('sm_wheel_loader_drive_f')">Model</a>, <a href="matlab:web('sm_wheel_loader_drive_f.html')">Documentation</a>
+</li>
+<li>Axle Rear: <a href="matlab:open_system('sm_wheel_loader_drive_r')">Model</a>, <a href="matlab:web('sm_wheel_loader_drive_r.html')">Documentation</a>
+</li>
+<li>Driveline Joint: <a href="matlab:open_system('sm_wheel_loader_driveline')">Model</a>, <a href="matlab:web('sm_wheel_loader_driveline.html')">Documentation</a>
+</li>
+<li>Planetary Gear Wheel Hub: <a href="matlab:open_system('sm_wheel_loader_planetary_gear')">Model</a>, <a href="matlab:web('sm_wheel_loader_planetary_gear.html')">Documentation</a>
+</li>
+</ol>
+</div>
+<p>
+<b>Workflows</b>
+</p>
+<div>
+<ol>
+<li>Power Split CVT Design: <a href="matlab:web('optim_cvt_power_split_design.html')">Documentation</a>, <a href="matlab:run('CVT_Calculate_Swash_Control_app_run.m');">MATLAB App</a>
+</li>
+<li>Terrain Definition from STL: <a href="matlab:web('wheel_loader_surface_terrain.html')">Documentation</a>
+</li>
+<li>Tire Point Cloud from STL: <a href="matlab:web('wheel_loader_point_cloud_tire.html')">Documentation</a>
+</li>
+</ol>
+</div>
+<p class="footer">Copyright 2023-2024 The MathWorks, Inc.<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024a</a>
+<br>
+</p>
+</div>
+<!--
 ##### SOURCE BEGIN #####
 %% Wheel Loader Design with Simscape(TM)
 %
@@ -81,6 +178,10 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % * *Integrated testing of physical system and controller* is supported by
 % a hydromechanical model of the CVT, powertrain, and linkage.
 %
+%
+% Copyright 2023-2024 The MathWorks, Inc.
+
+%%
 % *Complete Wheel Loader Model*
 % 
 % # Wheel Loader with Power Split CVT: <matlab:open_system('sm_wheel_loader') Model>, <matlab:web('sm_wheel_loader.html') Documentation>
@@ -92,10 +193,11 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % # Power Split CVT with Four Speed Ranges (Multibody): <matlab:open_system('sm_cvt_power_split_pg_4range') Model>, <matlab:web('sm_cvt_power_split_pg_4range.html') Documentation>
 % # Power Split Planetary Gear (Multibody): <matlab:open_system('sm_cvt_power_split_pg') Model>, <matlab:web('sm_cvt_power_split_pg.html') Documentation>
 %
-% *Vehicle and Linkage Models*
+% *Vehicle, Linkage, and Steering Models*
 % 
 % # Wheel Loader Chassis, Drivetrain, and Linkage: <matlab:open_system('sm_wheel_loader_vehicle') Model>, <matlab:web('sm_wheel_loader_vehicle.html') Documentation>
 % # Wheel Loader Linkage: <matlab:open_system('sm_wheel_loader_linkage') Model>, <matlab:web('sm_wheel_loader_linkage.html') Documentation>
+% # Wheel Loader Steering: <matlab:open_system('sm_wheel_loader_steer') Model>, <matlab:web('sm_wheel_loader_steer.html') Documentation>
 %
 % *Driveline Test Models*
 %
@@ -114,5 +216,8 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % # Terrain Definition from STL: <matlab:web('wheel_loader_surface_terrain.html') Documentation>
 % # Tire Point Cloud from STL: <matlab:web('wheel_loader_point_cloud_tire.html') Documentation>
 
+
 ##### SOURCE END #####
---></body></html>
+-->
+</body>
+</html>

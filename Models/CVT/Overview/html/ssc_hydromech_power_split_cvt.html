@@ -6,10 +6,10 @@
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
       -->
-<title>Hydromechanical Power Split CVT with Engine</title>
-<meta name="generator" content="MATLAB 23.2">
+<title>Hydromechanical Power Split CVT</title>
+<meta name="generator" content="MATLAB 24.1">
 <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
-<meta name="DC.date" content="2023-12-24">
+<meta name="DC.date" content="2024-04-30">
 <meta name="DC.source" content="ssc_hydromech_power_split_cvt.m">
 <style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
@@ -76,7 +76,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 </head>
 <body>
 <div class="content">
-<h1>Hydromechanical Power Split CVT with Engine</h1>
+<h1>Hydromechanical Power Split CVT</h1>
 <!--introduction-->
 <p>This example models a continuously variable transmission (CVT) using three different methods. An abstract option models the CVT as a variable ratio gear which enables engineers to refine the requirements for the CVT before a technology is chosen. A second option is a pure hydrostatic CVT with a variable displacement pump and a fixed displacement motor. The third option is a power-split CVT with parallel hydraulic and mechancial paths.</p>
 <p>(<a href="matlab:web('Wheel_Loader_Design_Overview.html')">return to Wheel Loader Design with Simscape Overview</a>)</p>
@@ -164,27 +164,27 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 </p>
 <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_08.png" alt=""> <h2 id="9">Simulation Results: Accelerate and Decelerate, Abstract CVT</h2>
 <p>Run acceleration and deceleration test with the abstract CVT.</p>
-<img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_09.png" alt=""> <pre class="codeoutput">Elapsed Sim Time = 0.56987
+<img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_09.png" alt=""> <pre class="codeoutput">Elapsed Sim Time = 0.62268
 </pre>
-<img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_10.png" alt=""> <h2 id="12">Simulation Results: Accelerate and Decelerate, Hydrostatic CVT</h2>
+<img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_10.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_11.png" alt=""> <h2 id="12">Simulation Results: Accelerate and Decelerate, Hydrostatic CVT</h2>
 <p>Run acceleration and deceleration test with the hydrostatic CVT.</p>
-<img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_11.png" alt=""> <pre class="codeoutput">Elapsed Sim Time = 0.97408
+<img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_12.png" alt=""> <pre class="codeoutput">Elapsed Sim Time = 0.92123
 </pre>
-<img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_12.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_13.png" alt=""> <h2 id="15">Simulation Results: Accelerate and Decelerate, Power Split CVT</h2>
+<img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_13.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_14.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_15.png" alt=""> <h2 id="15">Simulation Results: Accelerate and Decelerate, Power Split CVT</h2>
 <p>Run acceleration and deceleration test with the power split CVT.</p>
-<pre class="codeoutput">Elapsed Sim Time = 14.6141
+<pre class="codeoutput">Elapsed Sim Time = 10.559
 </pre>
-<img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_14.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_15.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_16.png" alt=""> <h2 id="18">Comparison of CVT Models</h2>
+<img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_16.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_17.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_18.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_19.png" alt=""> <h2 id="18">Comparison of CVT Models</h2>
 <p>The following plot compares the input torque for tests with the power split CVT and the abstract CVT models. The input shaft is spun at a fixed velocity, so we can see that the abstract CVT has been tuned to give similar performance as the power split hydromechanical CVT.</p>
 <p>The power split hydromechanical CVT is more efficient than the hydrostatic CVT for this drive cycle. The parallel mechanical path has a higher efficiency, and as a result for this test that goes up to maximum speed and back down again the losses are lower for power split CVT than the pure hydrostatic CVT.</p>
-<img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_17.png" alt=""> <p class="footer">Copyright 2023-2024 The MathWorks, Inc.<br>
-<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_20.png" alt=""> <p class="footer">Copyright 2023-2024 The MathWorks, Inc.<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024a</a>
 <br>
 </p>
 </div>
 <!--
 ##### SOURCE BEGIN #####
-%% Hydromechanical Power Split CVT with Engine
+%% Hydromechanical Power Split CVT
 % 
 % This example models a continuously variable transmission (CVT) using
 % three different methods.  An abstract option models the CVT as a variable
@@ -314,7 +314,8 @@ set_param(bdroot,'SimulationCommand','update')
 
 %%
 sim('ssc_hydromech_power_split_cvt');
-ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt.Vehicle.Tires_and_Body,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot3torque(simlog_ssc_hydromech_power_split_cvt)
 ssc_hydromech_power_split_cvt_plot2pressure(simlog_ssc_hydromech_power_split_cvt.Transmission)
 sm_wheel_loader_plot3clutches(simlog_ssc_hydromech_power_split_cvt.Transmission)
 
@@ -337,7 +338,8 @@ set_param(bdroot,'SimulationCommand','update')
 
 %%
 sim('ssc_hydromech_power_split_cvt');
-ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt.Vehicle.Tires_and_Body,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot3torque(simlog_ssc_hydromech_power_split_cvt)
 ssc_hydromech_power_split_cvt_plot2pressure(simlog_ssc_hydromech_power_split_cvt.Transmission)
 sm_wheel_loader_plot3clutches(simlog_ssc_hydromech_power_split_cvt.Transmission)
 
@@ -357,7 +359,8 @@ set_param([bdroot '/Transmission'],'LabelModeActiveChoice','Power_Split_HM')
 
 %%
 sim('ssc_hydromech_power_split_cvt');
-ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt.Vehicle.Tires_and_Body,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot3torque(simlog_ssc_hydromech_power_split_cvt)
 ssc_hydromech_power_split_cvt_plot2pressure(simlog_ssc_hydromech_power_split_cvt.Transmission)
 sm_wheel_loader_plot3clutches(simlog_ssc_hydromech_power_split_cvt.Transmission)
 

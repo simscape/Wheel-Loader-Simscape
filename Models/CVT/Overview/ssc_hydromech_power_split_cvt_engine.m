@@ -123,7 +123,8 @@ set_param([bdroot '/Vehicle with CVT/Transmission'],'LabelModeActiveChoice','Pow
 set_param([bdroot '/Vehicle with CVT/Engine'],'LabelModeActiveChoice','Droop')
 
 sim('ssc_hydromech_power_split_cvt_engine');
-ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT.Vehicle.Tires_and_Body,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot3torque(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT)
 ssc_hydromech_power_split_cvt_plot2pressure(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT.Transmission)
 sm_wheel_loader_plot3clutches(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT.Transmission)
 
@@ -141,7 +142,8 @@ set_param([bdroot '/Vehicle with CVT/Transmission'],'LabelModeActiveChoice','Abs
 
 %%
 sim('ssc_hydromech_power_split_cvt_engine');
-ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT.Vehicle.Tires_and_Body,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot3torque(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT)
 ssc_hydromech_power_split_cvt_plot2pressure(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT.Transmission)
 sm_wheel_loader_plot3clutches(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT.Transmission)
 
@@ -152,14 +154,15 @@ CVTLoss_Abs = calcPowerLossCVT(simlog_ssc_hydromech_power_split_cvt_engine.Vehic
 
 %% Simulation Results: Accelerate and Decelerate, Hydrostatic CVT 
 %
-% Run acceleration and deceleration test with the hydrostatic CVT.
+% Run load cycle with the abstract split CVT.
 %
 
 set_param([bdroot '/Vehicle with CVT/Transmission'],'LabelModeActiveChoice','Hydrostatic')
 
 %%
 sim('ssc_hydromech_power_split_cvt_engine');
-ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT.Vehicle.Tires_and_Body,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot3torque(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT)
 ssc_hydromech_power_split_cvt_plot2pressure(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT.Transmission)
 sm_wheel_loader_plot3clutches(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT)
 

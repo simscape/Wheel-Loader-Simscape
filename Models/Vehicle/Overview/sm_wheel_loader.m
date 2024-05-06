@@ -30,6 +30,7 @@ set_param([bdroot '/Wheel Loader'],'popup_engine','Droop');
 set_param([bdroot '/Wheel Loader'],'popup_driveline','1D, CV Joints');
 sm_wheel_loader_config_impl(bdroot,'Bucket')
 set_param([bdroot '/Wheel Loader'],'popup_cvt','Power Split Hydromechanical')
+set_param([bdroot '/Wheel Loader'],'popup_actuator_model','Hydraulic')
 
 %% Wheel Loader Subsystem
 %
@@ -104,13 +105,45 @@ set_param(bdroot,'SimulationCommand','update')
 %
 % Model of the wheel loader vehicle, including front and rear articulated
 % chassis, driveline, and linkage.  An optional load can be added using
-% variant subsystems.  The power required to actuate the linkages is drawn
-% from the engine PTO shaft.
+% variant subsystems.  
+% 
+% The fidelity level of the mechanical driveline model can be set to
+% different options:
+%
+% * *Driveline 1D* : Shafts are modeled as rotational inertias only.
+% Simulation runs very quickly.
+% * *Driveline 3D* : Shafts are modeled with a 3D multibody model.
+% Captures all rigid body dynamics of the system.
+%
+% The actuation model for the steering, linkage, and implements can be
+% configured to use the following options
+%
+% * *Ideal*: Cylinder positions are set using prescribed motion.
+% Simulation runs very quickly.  Used to determine actuator requirements.
+% * *Hydraulic*: Hydraulic pumps, valves, and cylinders are used to
+% model the actuation system.  Used to select hydraulic components and set
+% pressure levels.
 %
 % <matlab:open_system('sm_wheel_loader');open_system('sm_wheel_loader/Wheel%20Loader/Vehicle','force'); Open Subsystem>
 
 set_param([bdroot '/Wheel Loader/Vehicle'],'LinkStatus','none')
 open_system([bdroot '/Wheel Loader/Vehicle'],'force')
+
+%% Actuator Subsystem: Hydraulic
+%
+% In this configuration the cylinders are actuated by a hydraulic system.
+% Pumps are driven by the PTO shaft, one for the linkage and implements and
+% another for the steering system. Valves control the flow of hydraulic
+% fluid to the actuators which extend and contract to the desired position.
+%
+% The interface from this 1D model of the hydromechanical system and the 3D
+% multibody of the linkage is a 1D mechanical connection for the rod of
+% each cylinder.
+%
+% <matlab:open_system('sm_wheel_loader');open_system('sm_wheel_loader/Wheel%20Loader/Vehicle/Actuators/Hydraulic','force'); Open Subsystem>
+
+set_param('sm_wheel_loader/Wheel Loader/Vehicle/Actuators/Hydraulic','LinkStatus','none')
+open_system('sm_wheel_loader/Wheel Loader/Vehicle/Actuators/Hydraulic','force')
 
 %% Driveline 3D Subsystem
 %
@@ -135,7 +168,7 @@ set_param(bdroot,'SimulationCommand','update')
 % variant models the driveline as a 1D mechanical model that can be used
 % for exploring the design space of shaft sizes and gear ratios.
 %
-% <matlab:open_system('sm_wheel_loader');open_system('sm_wheel_loader/Wheel%20Loader/Vehicle/Driveline/Driveline/Driveline%201D','force'); Open Subsystem>
+% <matlab:open_system('sm_wheel_loader');open_system('sm_wheel_loader/Wheel%20Loader/Vehicle/Driveline/Driveline/Driveline%201D/Driveline','force'); Open Subsystem>
 
 set_param([bdroot '/Wheel Loader'],'popup_driveline','1D, CV Joints')
 set_param([bdroot '/Wheel Loader/Vehicle/Driveline/Driveline/Driveline 1D/Driveline'],'LinkStatus','none')
@@ -156,17 +189,18 @@ set_param([bdroot '/Wheel Loader/Vehicle/Linkage'],'LinkStatus','none')
 open_system([bdroot '/Wheel Loader/Vehicle/Linkage'],'force')
 set_param(bdroot,'SimulationCommand','update')
 
-%% Simulation Results: Y Loading Cycle with Droop Control, Power-Split CVT, 1D Driveline, Bucket
+%% Simulation Results: Y Cycle, Droop Control, *Power-Split CVT*, 1D Driveline, Bucket, Ideal Actuation
 %%
 %
 % The results below come from a simulation test where the wheel loader
-% completes a standard Y-cycle.
+% completes a standard Y-cycle with a power-split CVT.
 %
 
 set_param([bdroot '/Wheel Loader'],'popup_engine','Droop');
 set_param([bdroot '/Wheel Loader'],'popup_driveline','1D, CV Joints');
 sm_wheel_loader_config_impl(bdroot,'Bucket')
 set_param([bdroot '/Wheel Loader'],'popup_cvt','Power Split Hydromechanical')
+set_param([bdroot '/Wheel Loader'],'popup_actuator_model','Ideal')
 
 sim('sm_wheel_loader');
 
@@ -180,18 +214,19 @@ sm_wheel_loader_plot5steer(simlog_sm_wheel_loader.Wheel_Loader,logsout_sm_wheel_
 trqCVT = simlog_sm_wheel_loader.Wheel_Loader.Engine.Engine_Droop.Torque_Sensor.Torque_Sensor.t.series.values('N*m');
 timCVT = simlog_sm_wheel_loader.Wheel_Loader.Engine.Engine_Droop.Torque_Sensor.Torque_Sensor.t.series.time;
 
-%% Simulation Results: Y Loading Cycle with Droop Control, Abstract CVT, 1D Driveline, Bucket
+%% Simulation Results: Y Cycle, Droop Control, Abstract CVT, 1D Driveline, Bucket, Ideal Actuation
 %%
 %
 % The results below come from a simulation test where the wheel loader
-% completes a standard Y-cycle.
+% completes a standard Y-cycle.  The CVT is modeled abstractly as a
+% variable ratio gear.
 %
 
 set_param([bdroot '/Wheel Loader'],'popup_engine','Droop');
 set_param([bdroot '/Wheel Loader'],'popup_driveline','1D, CV Joints');
 sm_wheel_loader_config_impl(bdroot,'Bucket')
 set_param([bdroot '/Wheel Loader'],'popup_cvt','Abstract')
-
+set_param([bdroot '/Wheel Loader'],'popup_actuator_model','Ideal')
 sim('sm_wheel_loader');
 
 sm_wheel_loader_plot1whlspd(simlog_sm_wheel_loader,HMPST.Tire.Rad)
@@ -218,6 +253,30 @@ legend('Location','Best')
 yRange = abs(max(trqAbs)-min(trqAbs));
 set(gca,'YLim',[min(trqAbs)-0.1*yRange max(trqAbs)+0.1*yRange])
 title('Comparison of CVT Models')
+
+%% Simulation Results: Y Cycle, Droop Control, *Power-Split CVT*, 1D Driveline, Bucket, *Hydraulic Actuation*
+%%
+%
+% The results below come from a simulation test where the wheel loader
+% completes a standard Y-cycle. The power-split CVT is included and the
+% linkage and steering actuation is modeled as a hydraulic network.
+%
+
+set_param([bdroot '/Wheel Loader'],'popup_engine','Droop');
+set_param([bdroot '/Wheel Loader'],'popup_driveline','1D, CV Joints');
+sm_wheel_loader_config_impl(bdroot,'Bucket')
+set_param([bdroot '/Wheel Loader'],'popup_cvt','Power Split Hydromechanical')
+set_param([bdroot '/Wheel Loader'],'popup_actuator_model','Hydraulic')
+
+sim('sm_wheel_loader');
+
+sm_wheel_loader_plot1whlspd(simlog_sm_wheel_loader,HMPST.Tire.Rad)
+sm_wheel_loader_plot2vehpos(simlog_sm_wheel_loader)
+sm_wheel_loader_plot3clutches(simlog_sm_wheel_loader.Wheel_Loader.Transmission)
+sm_wheel_loader_plot4linkage(logsout_sm_wheel_loader.get('mVehicle').Values)
+sm_wheel_loader_plot5steer(simlog_sm_wheel_loader.Wheel_Loader,logsout_sm_wheel_loader.get('mVehicle').Values)
+sm_wheel_loader_plot6linkagehydr(simlog_sm_wheel_loader.Wheel_Loader.Vehicle.Actuators.Hydraulic)
+sm_wheel_loader_plot7steerhydr(simlog_sm_wheel_loader.Wheel_Loader.Vehicle.Actuators.Hydraulic)
 
 %%
 

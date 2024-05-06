@@ -6,7 +6,7 @@
 % few commands are used to extract just the points that are useful for the
 % contact and friction force calculation.
 %
-% The code used in the example is <matlab:edit('mars_rover_terrain_ptcloud_wheel_create.m') mars_rover_terrain_ptcloud_wheel_create.m>. 
+% The code used in the example is <matlab:edit('sm_wheel_loader_params_ptclds_tire.m') sm_wheel_loader_params_ptclds_tire.m>. 
 % 
 % Return to main example <matlab:web('Wheel_Loader_Design_Overview.html');
 % Wheel Loader Design with Simscape™>

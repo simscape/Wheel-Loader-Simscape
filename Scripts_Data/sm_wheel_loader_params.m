@@ -8,6 +8,9 @@ stopTime = 70;
 % Vehicle parameters
 HMPST = sm_wheel_loader_params_cvt;
 
+% Steering and implement hydraulic parameters
+HydFcnParams = sm_wheel_loader_params_hydr;
+
 % Ground contact settings, single sphere per wheel
 HMPST.Tire.Contact.sphere.stiffness = 1e5*3; % N/m
 HMPST.Tire.Contact.sphere.damping = 5e3*3*10; % N/(m/s)
@@ -61,6 +64,10 @@ Scene.Terrain = stl_to_gridsurface('hills_terrain.stl',100,100,'n');
 
 %% Tire Point Cloud - needs transforms from CAD import
 load('sm_wheel_loader_params_CAD_struct.mat')
+
+Wheel_Loader.Extras.bodyGroups(1).visualProperties.opacity = 1; % Seat Trim;
+Wheel_Loader.Extras.bodyGroups(2).visualProperties.opacity = 1; % Seat Trim;
+
 HMPST.Tire.ptcld = sm_wheel_loader_params_ptclds_tire;
 
 % Generate point cloud matrices for contact modeling between the wooden log
@@ -96,5 +103,11 @@ logLoad.LinkTest.binOri = 90; % deg
 
 
 % Load actuator motion data
-load('sm_wheel_loader_act_input_grapple.mat','actPVA')
-[actPVA.liftActBucket, actPVA.tiltActBucket, actPVA.inertiaLoadBucket] = sm_wheel_loader_act_input_bucket(actPVA.liftAct.pos);
+%inertiaLoadBucket.t = [0 15.8 17.0 54.0 57.5 70];
+%inertiaLoadBucket.z = [0 0     1    1    0   0]*0.5;
+%Toothbar.t          = [0 13 15.5 18 20 57 59 60 62];
+%Toothbar.p          = [0 0  1     1  0 0  1  1  0]*-73.565;
+
+
+
+

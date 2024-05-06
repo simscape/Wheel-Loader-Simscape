@@ -11,6 +11,16 @@ HMPST.OutputTransferGearPair.Ratio    = ...
     HMPST.OutputTransferGearPair.N_Gear/...
     HMPST.OutputTransferGearPair.N_Pinion;
 
+% Driveshafts
+HMPST.DriveshaftF.K = 1e5; % N*m/rad
+HMPST.DriveshaftF.D = 1e3; % N*m/rad
+
+HMPST.DriveshaftR.J = 1; % kg*m^2
+HMPST.DriveshaftFL.J = 1; % kg*m^2
+HMPST.DriveshaftFR.J = 1; % kg*m^2
+HMPST.DriveshaftRL.J = 1; % kg*m^2
+HMPST.DriveshaftRR.J = 1; % kg*m^2
+
 % Differential
 HMPST.Differential.N_Pinion     = 10;
 HMPST.Differential.N_Ring       = 28;
@@ -265,10 +275,10 @@ HMPST.GearTrain.PG4.Ring.PitchDiam   = HMPST.GearTrain.PG4.Ring.TeethNum*HMPST.G
 HMPST.GearTrain.PG4.Ring.OutDiam     = HMPST.GearTrain.PG4.Ring.PitchDiam*1.25;
 
 %% Abstract CVT
-HMPST.AbstractCVT.dInput       = 0.3/3; % N*m/(rad/s)
-HMPST.AbstractCVT.dOutput      = 0.4/4.2; % N*m/(rad/s)
+HMPST.AbstractCVT.dInput       = 0.3/(3+0.6); % N*m/(rad/s)
+HMPST.AbstractCVT.dOutput      = 0.4/(4.2+0.5); % N*m/(rad/s)
 HMPST.AbstractCVT.kCompliance  = 10000; % N*m/rad
-HMPST.AbstractCVT.dCompliance  = 100;   % N*m/(rad/s)
+HMPST.AbstractCVT.dCompliance  = 100*10;   % N*m/(rad/s)
 
 
 %% Clutch Parameters
@@ -315,6 +325,7 @@ HMPST.Brake.logic2Press  = 5e5;  % Pa
 HMPST.Brake.tsFilt       = 0.05; % sec
 
 %% Bearing Friction Lumped
+%HMPST.Bearing.dVisc      = 0.001;  % N*m/(rad/s)
 HMPST.Bearing.dVisc      = 0.001;  % N*m/(rad/s)
 
 %% Actuator
@@ -370,10 +381,21 @@ HMPST.TireMF1D.RA.rollingR.vth   = 0.001;   % m/s
 
 
 %% Visuals
-HMPST.Vis.RAxleHou.opc = 1;%0.1;
-HMPST.Vis.FAxleHou.opc = 1;%0.1;
-HMPST.Vis.RDiffHou.opc = 1;%0.1;
-HMPST.Vis.FDiffHou.opc = 1;%0.1;
-HMPST.Vis.FDriveHou.opc = 1;%0.1;
-HMPST.Vis.WhlPlaHou.opc = 1;%0.5;
+HMPST.Vis.RAxleHou.opc   = 1;%0.1;
+HMPST.Vis.FAxleHou.opc   = 1;%0.1;
+HMPST.Vis.RDiffHou.opc   = 1;%0.1;
+HMPST.Vis.FDiffHou.opc   = 1;%0.1;
+HMPST.Vis.TfrGearHou.opc = 1;%0.1;
+HMPST.Vis.FDriveHou.opc  = 1;%0.1;
+HMPST.Vis.WhlPlaHou.opc  = 1;%0.5;
+HMPST.Vis.SteerWheel.opc = 1; 
+HMPST.Vis.SeatTrim.opc   = 1;
+HMPST.Vis.Bucket.opc     = 1;
+HMPST.Vis.Cap.opc        = 1;
+HMPST.Vis.Light.opc      = 1;
+HMPST.Vis.Lens.opc       = 0.7;
+
+
+
+
 

@@ -26,10 +26,17 @@ simlog_posx = simlog_veh.Wheel_Loader.Body_to_World.Px.p.series.values('m');
 simlog_posy = simlog_veh.Wheel_Loader.Body_to_World.Py.p.series.values('m');
 
 %% Plot results
-plot(simlog_posx, simlog_posy,'LineWidth', 1,'DisplayName','Vehicle Position')
+plot(simlog_posx, simlog_posy,'Color',[1.0000 0.5961 0.0549],'LineWidth', 2,'DisplayName','Vehicle Position')
 grid on
 title('Vehicle Position')
-ylabel('Speed (rev/s)')
+ylabel('Position (m)')
+xlabel('Position (m)')
 %legend('Location','Best');
 
+temp_xLimits = get(gca, 'XLim');
+temp_yLimits = get(gca, 'YLim');
+xticks(round(temp_xLimits(1)):1:round(temp_xLimits(2)))
+yticks(round(temp_yLimits(1)):1:round(temp_yLimits(2)))
+set(gca,'Color',[0.9 0.9 0.9])
+set(gca,'GridColor',[1 1 1],'GridLineWidth',1.5,'GridAlpha',1)
 axis equal
