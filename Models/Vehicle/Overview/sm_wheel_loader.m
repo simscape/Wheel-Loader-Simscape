@@ -5,10 +5,11 @@
 % (<matlab:web('Wheel_Loader_Design_Overview.html') return to Wheel Loader Design with Simscape Overview>)
 % 
 % This example models a wheel loader with a power-split hydromechanical
-% continuously variable transmission (CVT). The engine, CVT, driveline,
-% chassis, and linkage system are all modeled using Simscape.  The control
-% systems are modeled in Simulink.  A bucket or a grapple can be attached
-% to the linkage.
+% continuously variable transmission (CVT. Other CVT technologies can be
+% tested as well, including pure hydrostatic and electrical CVT. The
+% engine, CVT, driveline, chassis, and linkage system are all modeled using
+% Simscape.  The control systems are modeled in Simulink.  A bucket or a
+% grapple can be attached to the linkage.
 %
 % Copyright 2023-2024 The MathWorks, Inc.
 
@@ -47,7 +48,7 @@ open_system('sm_wheel_loader/Wheel Loader','force')
 
 %% Transmission Variant Subsystems
 %
-% Three options for modeling the CVT are included in the model.  Using
+% Four options for modeling the CVT are included in the model.  Using
 % variant subsystems, one of them can be activated for a test.  The
 % subsystems all have the same interface, which includes a mechanical
 % connection to the engine and a mechanical connection to the driveline.
@@ -80,12 +81,27 @@ set_param(bdroot,'SimulationCommand','update')
 % it is not as efficient as the power-split design, as the mechanical path
 % has a higher efficiency.
 %
-% <matlab:open_system('sm_wheel_loader');open_system('sm_wheel_loader/Wheel%20Loader/Transmission/Hydrostatic','force'); Open Subsystem>
+% <matlab:open_system('sm_wheel_loader');open_system('sm_wheel_loader/Wheel%20Loader/Transmission/Hydrostatic/Hydrostatic','force'); Open Subsystem>
 
 set_param([bdroot '/Wheel Loader'],'popup_cvt','Hydrostatic')
-set_param([bdroot '/Wheel Loader/Transmission/Hydrostatic'],'LinkStatus','none')
-open_system([bdroot '/Wheel Loader/Transmission/Hydrostatic'],'force')
+set_param([bdroot '/Wheel Loader/Transmission/Hydrostatic/Hydrostatic'],'LinkStatus','none')
+open_system([bdroot '/Wheel Loader/Transmission/Hydrostatic/Hydrostatic'],'force')
 set_param(bdroot,'SimulationCommand','update')
+
+%% Electrical Transmission Subsystem
+%
+% Electrical transmission with generator, motor, and battery.  A control
+% system adjusts the power flow between the motor and the generator.  The
+% control system enables these components to act as a variable ratio
+% transmission.
+%
+% <matlab:open_system('sm_wheel_loader');open_system('sm_wheel_loader/Wheel%20Loader/Transmission/Electrical','force'); Open Subsystem>
+
+set_param([bdroot '/Wheel Loader'],'popup_cvt','Electrical')
+set_param([bdroot '/Wheel Loader/Transmission/Electrical'],'LinkStatus','none')
+open_system([bdroot '/Wheel Loader/Transmission/Electrical'],'force')
+set_param(bdroot,'SimulationCommand','update')
+
 
 %% Power Split Hydromechanical CVT Subsystem
 %
@@ -237,15 +253,66 @@ sm_wheel_loader_plot5steer(simlog_sm_wheel_loader.Wheel_Loader,logsout_sm_wheel_
 trqAbs = simlog_sm_wheel_loader.Wheel_Loader.Engine.Engine_Droop.Torque_Sensor.Torque_Sensor.t.series.values('N*m');
 timAbs = simlog_sm_wheel_loader.Wheel_Loader.Engine.Engine_Droop.Torque_Sensor.Torque_Sensor.t.series.time;
 
+%% Simulation Results: Y Cycle, Droop Control, Electrical CVT, 1D Driveline, Bucket, Ideal Actuation
+%%
+%
+% The results below come from a simulation test where the wheel loader
+% completes a standard Y-cycle with an electrical CVT.
+%
+
+set_param([bdroot '/Wheel Loader'],'popup_engine','Droop');
+set_param([bdroot '/Wheel Loader'],'popup_driveline','1D, CV Joints');
+sm_wheel_loader_config_impl(bdroot,'Bucket')
+set_param([bdroot '/Wheel Loader'],'popup_cvt','Electrical')
+set_param([bdroot '/Wheel Loader'],'popup_actuator_model','Ideal')
+sim('sm_wheel_loader');
+
+sm_wheel_loader_plot1whlspd(simlog_sm_wheel_loader,HMPST.Tire.Rad)
+sm_wheel_loader_plot2vehpos(simlog_sm_wheel_loader)
+sm_wheel_loader_plot5steer(simlog_sm_wheel_loader.Wheel_Loader,logsout_sm_wheel_loader.get('mVehicle').Values)
+ssc_hydromech_power_split_cvt_plot4ecvtcurrent(simlog_sm_wheel_loader.Wheel_Loader.Transmission)
+
+% Get engine torque data
+trqEle = simlog_sm_wheel_loader.Wheel_Loader.Engine.Engine_Droop.Torque_Sensor.Torque_Sensor.t.series.values('N*m');
+timEle = simlog_sm_wheel_loader.Wheel_Loader.Engine.Engine_Droop.Torque_Sensor.Torque_Sensor.t.series.time;
+
+%% Simulation Results: Y Cycle, Droop Control, Hydrostatic CVT, 1D Driveline, Bucket, Ideal Actuation
+%%
+%
+% The results below come from a simulation test where the wheel loader
+% completes a standard Y-cycle with an electrical CVT.
+%
+
+set_param([bdroot '/Wheel Loader'],'popup_engine','Droop');
+set_param([bdroot '/Wheel Loader'],'popup_driveline','1D, CV Joints');
+sm_wheel_loader_config_impl(bdroot,'Bucket')
+set_param([bdroot '/Wheel Loader'],'popup_cvt','Hydrostatic')
+set_param([bdroot '/Wheel Loader'],'popup_actuator_model','Ideal')
+sim('sm_wheel_loader');
+
+sm_wheel_loader_plot1whlspd(simlog_sm_wheel_loader,HMPST.Tire.Rad)
+sm_wheel_loader_plot2vehpos(simlog_sm_wheel_loader)
+sm_wheel_loader_plot5steer(simlog_sm_wheel_loader.Wheel_Loader,logsout_sm_wheel_loader.get('mVehicle').Values)
+ssc_hydromech_power_split_cvt_plot2pressure(simlog_sm_wheel_loader.Wheel_Loader.Transmission)
+
+% Get engine torque data
+trqHst = simlog_sm_wheel_loader.Wheel_Loader.Engine.Engine_Droop.Torque_Sensor.Torque_Sensor.t.series.values('N*m');
+timHst = simlog_sm_wheel_loader.Wheel_Loader.Engine.Engine_Droop.Torque_Sensor.Torque_Sensor.t.series.time;
+
+
 %% Comparison of CVT Models
 %
 % The following plot compares the input torque for tests with the power
-% split CVT and the abstract CVT models.
+% split CVT, electrical, and the abstract CVT models.
 
 figure(44)
-plot(timAbs,trqAbs,'LineWidth',1,'DisplayName','Abstract');
+temp_colororder = get(gca,'defaultAxesColorOrder');
+
+plot(timCVT,trqCVT,'-.','LineWidth',1,'DisplayName','Power Split');
 hold on
-plot(timCVT,trqCVT,'LineWidth',1,'DisplayName','Power Split');
+plot(timAbs,trqAbs,'LineWidth',2,'DisplayName','Abstract');
+plot(timHst,trqHst,":",'LineWidth',2,'DisplayName','Hydrostatic');
+plot(timEle,trqEle,'-.','LineWidth',2,'DisplayName','Electrical');
 hold off
 ylabel('CVT Input Torque (N*m)')
 xlabel('Time (s)');
@@ -262,6 +329,7 @@ title('Comparison of CVT Models')
 % linkage and steering actuation is modeled as a hydraulic network.
 %
 
+close(44)
 set_param([bdroot '/Wheel Loader'],'popup_engine','Droop');
 set_param([bdroot '/Wheel Loader'],'popup_driveline','1D, CV Joints');
 sm_wheel_loader_config_impl(bdroot,'Bucket')

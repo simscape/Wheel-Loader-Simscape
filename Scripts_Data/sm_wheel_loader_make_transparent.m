@@ -26,7 +26,7 @@ for bg_i = 1:sizeBG
     sizeSG = length(Wheel_Loader.bodyGroups(bg_i).subGroups);
 
     % If (not a cylinder)
-    if(~ismember(bg_i,BGarrayOpaqueBG.cvt))
+    if(~ismember(bg_i,BGarrayOpaqueBG.scy))
         % Loop over subgroups
         for sg_i = 1:sizeSG
             % Set transparency to 0.1
@@ -40,7 +40,7 @@ HMPST.Vis.RAxleHou.opc   = opc_trans;
 HMPST.Vis.FAxleHou.opc   = opc_trans;
 HMPST.Vis.RDiffHou.opc   = opc_trans;
 HMPST.Vis.FDiffHou.opc   = opc_trans; 
-HMPST.Vis.TfrGearHou.opc = 1;%opc_trans;  % Leave opaque for cvt
+HMPST.Vis.TfrGearHou.opc = opc_trans;  % Leave opaque for cvt
 HMPST.Vis.FDriveHou.opc  = opc_trans;
 HMPST.Vis.WhlPlaHou.opc  = opc_trans;
 HMPST.Vis.SteerWheel.opc = opc_trans;  % Leave opaque for steering

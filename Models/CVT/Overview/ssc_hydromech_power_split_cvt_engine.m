@@ -42,7 +42,7 @@ set_param(find_system('ssc_hydromech_power_split_cvt_engine','MatchFilter',@Simu
 
 %% Transmission Variant Subsystems
 %
-% Three options for modeling the CVT are included in the model.  Using
+% Four options for modeling the CVT are included in the model.  Using
 % variant subsystems, one of them can be activated for a test.  The
 % subsystems all have the same interface, which includes a mechanical
 % connection to the engine and a mechanical connection to the driveline.
@@ -77,6 +77,26 @@ open_system('ssc_hydromech_power_split_cvt_engine/Vehicle with CVT/Transmission/
 
 set_param('ssc_hydromech_power_split_cvt_engine/Vehicle with CVT/Transmission/Power Split Hydromech/Hydrostatic','LinkStatus','none')
 open_system('ssc_hydromech_power_split_cvt_engine/Vehicle with CVT/Transmission/Power Split Hydromech/Hydrostatic','force')
+
+%% Electrical Transmission Subsystem
+%
+% Electrical transmission with generator, motor, and battery.  The input
+% shaft drives a generator which is electrically connected to a motor which
+% mechanically connected to the drivetrain.  A control system adjusts the
+% torque request to the generator and motor so that the desired ratio of
+% (input shaft speed/output shaft speed) is achieved.
+% 
+% The power source on the DC bus maintains stability of the DC bus and
+% provides the current required of the motor that the generator cannot
+% provide.  This can be due to variations in time constants for the motor
+% and generator or if the generator reaches its power limit. 
+%
+% <matlab:open_system('ssc_hydromech_power_split_cvt_engine');open_system('ssc_hydromech_power_split_cvt_engine/Vehicle%20with%20CVT/Transmission/Electrical','force'); Open Subsystem>
+
+set_param([bdroot '/Vehicle with CVT/Transmission'],'LabelModeActiveChoice','Electrical')
+set_param('ssc_hydromech_power_split_cvt_engine/Vehicle with CVT/Transmission/Electrical','LinkStatus','none')
+open_system('ssc_hydromech_power_split_cvt_engine/Vehicle with CVT/Transmission/Electrical','force')
+set_param(bdroot,'SimulationCommand','update')
 
 %% Abstract CVT Subsystem
 %
@@ -154,7 +174,7 @@ CVTLoss_Abs = calcPowerLossCVT(simlog_ssc_hydromech_power_split_cvt_engine.Vehic
 
 %% Simulation Results: Accelerate and Decelerate, Hydrostatic CVT 
 %
-% Run load cycle with the abstract split CVT.
+% Run load cycle with the hydrostatic CVT.
 %
 
 set_param([bdroot '/Vehicle with CVT/Transmission'],'LabelModeActiveChoice','Hydrostatic')
@@ -171,6 +191,25 @@ trqHst = simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT.Engine.Eng
 timHst = simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT.Engine.Engine_Droop.Torque_Sensor.Torque_Sensor.t.series.time;
 CVTLoss_HST = calcPowerLossCVT(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT);
 
+%% Simulation Results: Accelerate and Decelerate, Electrical CVT 
+%
+% Run load cycle with the electrical CVT.
+%
+
+set_param([bdroot '/Vehicle with CVT/Transmission'],'LabelModeActiveChoice','Electrical')
+
+%%
+sim('ssc_hydromech_power_split_cvt_engine');
+ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot3torque(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT)
+ssc_hydromech_power_split_cvt_plot4ecvtcurrent(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT.Transmission)
+sm_wheel_loader_plot3clutches(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT)
+
+% Get engine torque data, CVT losses
+trqEle = simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT.Engine.Engine_Droop.Torque_Sensor.Torque_Sensor.t.series.values('N*m');
+timEle = simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT.Engine.Engine_Droop.Torque_Sensor.Torque_Sensor.t.series.time;
+CVTLoss_Ele = calcPowerLossCVT(simlog_ssc_hydromech_power_split_cvt_engine.Vehicle_with_CVT);
+
 %% Comparison of CVT Models
 %
 % The following plot compares the input torque for tests with the power
@@ -184,6 +223,7 @@ plot(timPSP,trqPSP,'LineWidth',1,'DisplayName',['Power Split: CVT Losses ' sprin
 hold on
 plot(timAbs,trqAbs,'LineWidth',2,'DisplayName',['Abstract:      CVT Losses ' sprintf('%3.2f',CVTLoss_Abs)]);
 plot(timHst,trqHst,'LineWidth',2,'DisplayName',['Hydrostatic: CVT Losses ' sprintf('%3.2f',CVTLoss_HST)]);
+plot(timEle,trqEle,'LineWidth',2,'DisplayName',['Electrical:    CVT Losses ' sprintf('%3.2f',CVTLoss_Ele)]);
 hold off
 ylabel('CVT Input Torque (N*m)')
 xlabel('Time (s)');

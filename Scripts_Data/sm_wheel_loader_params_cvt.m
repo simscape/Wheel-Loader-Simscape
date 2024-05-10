@@ -280,6 +280,30 @@ HMPST.AbstractCVT.dOutput      = 0.4/(4.2+0.5); % N*m/(rad/s)
 HMPST.AbstractCVT.kCompliance  = 10000; % N*m/rad
 HMPST.AbstractCVT.dCompliance  = 100*10;   % N*m/(rad/s)
 
+%% Electrical CVT
+HMPST.eCVT.Battery.Vnom           = 200;  % V
+HMPST.eCVT.Battery.Rint           = 2e-5; % Ohm
+HMPST.eCVT.Battery.AH             = 50;   % A*hr
+HMPST.eCVT.Battery.V1             = 191;  % V
+HMPST.eCVT.Battery.AH1            = 25;   % A*hr
+
+HMPST.eCVT.Generator.trqSpd.t     = [.09, .08, .07, 0]*1000*2;  % N*m
+HMPST.eCVT.Generator.trqSpd.w     = [0, 3750, 7500, 8000];    % rpm
+HMPST.eCVT.Generator.Tc           = 0.02;   % sec
+HMPST.eCVT.Generator.J            = 5e-6;   % kg*m^2
+HMPST.eCVT.Generator.lam          = HMPST.AbstractCVT.dInput; % kg*m^2
+HMPST.eCVT.Generator.w0           = HMPST.Eng.wTarget;        % rpm
+
+HMPST.eCVT.Motor.trqSpd.t         = [.09, .08, .07, 0]*1000*2;  % N*m
+HMPST.eCVT.Motor.trqSpd.w         = [0, 3750, 7500, 8000];    % rpm
+HMPST.eCVT.Motor.Tc               = 0.02;   % sec
+HMPST.eCVT.Motor.J                = 5e-6;   % kg*m^2
+HMPST.eCVT.Motor.lam              = HMPST.AbstractCVT.dOutput; % kg*m^2
+HMPST.eCVT.Motor.w0               = 0;        % rpm
+
+HMPST.Control.Kp                  = 10;        % -
+HMPST.Control.Ki                  = 0.5;        % -
+HMPST.Control.tFilt               = 0.01;     % sec
 
 %% Clutch Parameters
 HMPST.Clutch.SpdRange.trqRad      = 200;  % mm

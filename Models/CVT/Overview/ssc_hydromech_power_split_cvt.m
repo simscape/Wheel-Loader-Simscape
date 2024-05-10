@@ -1,12 +1,14 @@
 %% Hydromechanical Power Split CVT
 % 
 % This example models a continuously variable transmission (CVT) using
-% three different methods.  An abstract option models the CVT as a variable
+% four different methods.  An abstract option models the CVT as a variable
 % ratio gear which enables engineers to refine the requirements for the CVT
 % before a technology is chosen. A second option is a pure hydrostatic CVT
 % with a variable displacement pump and a fixed displacement motor. The
-% third option is a power-split CVT with parallel hydraulic and mechancial
-% paths.
+% third option is an electrical CVT, where the engine drives a generator
+% and power is transmitted electrically to a motor which powers the
+% drivetrain. The fourth option is a power-split CVT with parallel
+% hydraulic and mechancial paths.
 %
 % (<matlab:web('Wheel_Loader_Design_Overview.html') return to Wheel Loader Design with Simscape Overview>)
 %
@@ -30,7 +32,7 @@ set_param(find_system('ssc_hydromech_power_split_cvt','MatchFilter',@Simulink.ma
 
 %% Transmission Variant Subsystems
 %
-% Three options for modeling the CVT are included in the model.  Using
+% Four options for modeling the CVT are included in the model.  Using
 % variant subsystems, one of them can be activated for a test.  The
 % subsystems all have the same interface, which includes a mechanical
 % connection to the engine and a mechanical connection to the driveline.
@@ -68,6 +70,26 @@ set_param(bdroot,'SimulationCommand','update')
 set_param([bdroot '/Transmission'],'LabelModeActiveChoice','Hydrostatic')
 set_param('ssc_hydromech_power_split_cvt/Transmission/Hydrostatic/Hydrostatic','LinkStatus','none')
 open_system('ssc_hydromech_power_split_cvt/Transmission/Hydrostatic/Hydrostatic','force')
+set_param(bdroot,'SimulationCommand','update')
+
+%% CVT: Electrical
+%
+% Electrical transmission with generator, motor, and battery.  The input
+% shaft drives a generator which is electrically connected to a motor which
+% mechanically connected to the drivetrain.  A control system adjusts the
+% torque request to the generator and motor so that the desired ratio of
+% (input shaft speed/output shaft speed) is achieved.
+% 
+% The power source on the DC bus maintains stability of the DC bus and
+% provides the current required of the motor that the generator cannot
+% provide.  This can be due to variations in time constants for the motor
+% and generator or if the generator reaches its power limit. 
+%
+% <matlab:open_system('ssc_hydromech_power_split_cvt');open_system('ssc_hydromech_power_split_cvt/Transmission/Electrical','force'); Open Subsystem>
+
+set_param([bdroot '/Transmission'],'LabelModeActiveChoice','Electrical')
+set_param('ssc_hydromech_power_split_cvt/Transmission/Electrical','LinkStatus','none')
+open_system('ssc_hydromech_power_split_cvt/Transmission/Electrical','force')
 set_param(bdroot,'SimulationCommand','update')
 
 %% CVT: Power Split Hydromechanical
@@ -166,10 +188,37 @@ simlog_vVeh_HST = simlog_ssc_hydromech_power_split_cvt.Vehicle.Tires_and_Body.Ve
 %% Simulation Results: Accelerate and Decelerate, Power Split CVT 
 %%
 %
+% Run acceleration and deceleration test with the electrical CVT.
+%
+
+set_param([bdroot '/Transmission'],'LabelModeActiveChoice','Electrical')
+set_param([bdroot '/Transmission/Electrical'],'LinkStatus','none')
+open_system([bdroot '/Transmission/Electrical'],'force')
+set_param(bdroot,'SimulationCommand','update')
+
+%%
+sim('ssc_hydromech_power_split_cvt');
+ssc_hydromech_power_split_cvt_plot1whlspd(simlog_ssc_hydromech_power_split_cvt,HMPST.Tire.Rad)
+ssc_hydromech_power_split_cvt_plot3torque(simlog_ssc_hydromech_power_split_cvt)
+ssc_hydromech_power_split_cvt_plot4ecvtcurrent(simlog_ssc_hydromech_power_split_cvt.Transmission)
+sm_wheel_loader_plot3clutches(simlog_ssc_hydromech_power_split_cvt.Transmission)
+
+% Get engine torque data
+trqEle = simlog_ssc_hydromech_power_split_cvt.Velocity_Source.t.series.values('N*m');
+timEle = simlog_ssc_hydromech_power_split_cvt.Velocity_Source.t.series.time;
+CVTLoss_Ele = calcPowerLossCVT(simlog_ssc_hydromech_power_split_cvt);
+simlog_vVeh_Ele = simlog_ssc_hydromech_power_split_cvt.Vehicle.Tires_and_Body.Vehicle_Body.v.series.values('km/hr');
+
+%% Simulation Results: Accelerate and Decelerate, Power Split CVT 
+%%
+%
 % Run acceleration and deceleration test with the power split CVT.
 %
 
 set_param([bdroot '/Transmission'],'LabelModeActiveChoice','Power_Split_HM')
+set_param([bdroot '/Transmission/Power Split Hydromech'],'LinkStatus','none')
+open_system([bdroot '/Transmission/Power Split Hydromech'],'force')
+set_param(bdroot,'SimulationCommand','update')
 
 %%
 sim('ssc_hydromech_power_split_cvt');
@@ -203,15 +252,17 @@ plot(timPSP,simlog_vVeh_PSP,'LineWidth',2,'DisplayName','Power Split');
 hold on
 plot(timAbs,simlog_vVeh_Abs,'--','LineWidth',2,'DisplayName','Abstract');
 plot(timHst,simlog_vVeh_HST,'-.','LineWidth',2,'DisplayName','Hydrostatic');
+plot(timEle,simlog_vVeh_Ele,':','LineWidth',2,'DisplayName','Electrical');
 hold off
 title('Vehicle Speed (km/h)')
 legend('Location','Best')
 ylabel('Speed (km/h)')
 subplot(212)
-plot(timPSP,trqPSP,'LineWidth',1,'DisplayName',['Power Split Losses: ' sprintf('%3.2f',CVTLoss_PSP) ' kWh']);
+plot(timPSP,trqPSP,'LineWidth',1,'DisplayName',['Power Split Losses: '   sprintf('%3.2f',CVTLoss_PSP) ' kWh']);
 hold on
 plot(timAbs,trqAbs,'LineWidth',2,'DisplayName',['Abstract Losses:      ' sprintf('%3.2f',CVTLoss_Abs) ' kWh']);
-plot(timHst,trqHst,'LineWidth',2,'DisplayName',['Hydrostatic Losses: ' sprintf('%3.2f',CVTLoss_HST) ' kWh']);
+plot(timHst,trqHst,'LineWidth',2,'DisplayName',['Hydrostatic Losses: '   sprintf('%3.2f',CVTLoss_HST) ' kWh']);
+plot(timEle,trqEle,'LineWidth',2,'DisplayName',['Electrical Losses:    ' sprintf('%3.2f',CVTLoss_Ele) ' kWh']);
 hold off
 ylabel('CVT Input Torque (N*m)')
 xlabel('Time (s)');

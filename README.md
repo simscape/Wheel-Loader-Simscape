@@ -11,6 +11,7 @@ are used to find gear ratios that achieve desired speed ranges
 * **Interactive workflows** are shown using MATLAB&reg; Apps to explore designs
 * **Integrated testing of physical system and controller** is supported by 
 a hydromechanical model of the CVT, powertrain, and linkage.
+* **Exploration of electrical technology** is enabled with an electrical CVT model.
 * **Surface terrain definition** is shown by extracting point clouds from STL geometry.
 * **Tire profile definition** is shown by extracting point clouds from STL geometry.
 
@@ -28,11 +29,17 @@ You can also open in MATLAB Online: [![Open in MATLAB Online](https://www.mathwo
 ## **Wheel Loader Subsystems**
 ![](Models/Vehicle/Overview/html/sm_wheel_loader_02.png)
 
-## **Wheel Loader Power Split Hydromechanical CVT**
+## **Wheel Loader Electrical CVT**
 ![](Models/Vehicle/Overview/html/sm_wheel_loader_06.png)
 
-## **Wheel Loader Chassis, Driveline, and Implement**
+## **Wheel Loader Hydrostatic CVT**
+![](Models/Vehicle/Overview/html/sm_wheel_loader_05.png)
+
+## **Wheel Loader Power Split Hydromechanical CVT**
 ![](Models/Vehicle/Overview/html/sm_wheel_loader_07.png)
+
+## **Wheel Loader Chassis, Driveline, and Implement**
+![](Models/Vehicle/Overview/html/sm_wheel_loader_08.png)
 
 ## **MATLAB App for Exploring CVT Design**
 ![](Workflows/CVT_Design/Overview/html/optim_cvt_power_split_design_Overview.png)
