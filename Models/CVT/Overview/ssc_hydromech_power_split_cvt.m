@@ -185,7 +185,7 @@ timHst = simlog_ssc_hydromech_power_split_cvt.Velocity_Source.t.series.time;
 CVTLoss_HST = calcPowerLossCVT(simlog_ssc_hydromech_power_split_cvt);
 simlog_vVeh_HST = simlog_ssc_hydromech_power_split_cvt.Vehicle.Tires_and_Body.Vehicle_Body.v.series.values('km/hr');
 
-%% Simulation Results: Accelerate and Decelerate, Power Split CVT 
+%% Simulation Results: Accelerate and Decelerate, Electrical CVT 
 %%
 %
 % Run acceleration and deceleration test with the electrical CVT.

@@ -16,6 +16,7 @@ BGarrayOpaqueBG.eng = [999]; % All transparent except extras
 BGarrayOpaqueBG.tir = [25 33 24 32 27 35 26 34];
 BGarrayOpaqueBG.bkl = [999];
 BGarrayOpaqueBG.grl = [10 11 12 13 14 15 16 53];
+BGarrayOpaqueBG.lnk = [2 3 17 18 19 53 6 7 8 9 4 5];
 
 opc_trans = 0.05;
 
@@ -26,7 +27,7 @@ for bg_i = 1:sizeBG
     sizeSG = length(Wheel_Loader.bodyGroups(bg_i).subGroups);
 
     % If (not a cylinder)
-    if(~ismember(bg_i,BGarrayOpaqueBG.scy))
+    if(~ismember(bg_i,BGarrayOpaqueBG.cyl))
         % Loop over subgroups
         for sg_i = 1:sizeSG
             % Set transparency to 0.1

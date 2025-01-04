@@ -1,7 +1,7 @@
 function results = sm_wheel_loader_getCylTraj(simlog_lnk)
 % Code to plot simulation results from sm_wheel_loader
 %
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2023-2024 The MathWorks, Inc.
 
 
 %% Get simulation results
