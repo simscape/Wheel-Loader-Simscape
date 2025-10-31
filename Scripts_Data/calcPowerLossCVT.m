@@ -2,7 +2,7 @@ function ELoss= calcPowerLossCVT(simlog_pwr,varargin)
 % Calculate power loss across continuously variable transmission (CVT)
 % Relies on Rotational Mechanical Power sensors in model
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 
 p1e   = simlog_pwr.Power_Sensor1_Engine_Out.Power_Sensor.P.series.values('kW');

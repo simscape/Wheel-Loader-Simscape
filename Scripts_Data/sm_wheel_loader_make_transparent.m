@@ -1,7 +1,7 @@
 %% Code to make all parts transparent except lift, tilt, and steer hydraulic cylinders
 % To reset to original values, run startup script
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 % Find number of body groups in Wheel_Loader structure
 sizeBG = length(Wheel_Loader.bodyGroups);

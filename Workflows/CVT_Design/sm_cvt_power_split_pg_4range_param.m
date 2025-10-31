@@ -1,5 +1,5 @@
 function cvtPar = sm_cvt_power_split_pg_4range_param(varargin)
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 if (nargin==0)
     clrSet   = 'default';

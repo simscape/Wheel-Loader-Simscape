@@ -5,7 +5,7 @@ function sm_cvt_power_split_pg_plot1speed(simlog,logsout,cvtPar)
 % The plot below shows the speeds of the three shafts attached to the
 % planetary gear as different pairs of shafts are driven and locked.
 %
-% Copyright 2017-2024 The MathWorks, Inc.
+% Copyright 2017-2025 The MathWorks, Inc.
 
 % Generate simulation results if they don't exist
 if ~exist('simlog', 'var')

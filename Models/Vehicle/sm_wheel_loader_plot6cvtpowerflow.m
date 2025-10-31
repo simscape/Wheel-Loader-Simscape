@@ -1,7 +1,7 @@
 function sm_wheel_loader_plot6cvtpowerflow(simlog)
 % Function to plot flow of power in wheel loader model
 %
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 simlog_cvt_trans = simlog.Transmission.Power_Split_Hydromech;
 

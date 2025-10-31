@@ -1,7 +1,7 @@
 function ssc_hydromech_power_split_cvt_plot1whlspd(simlog_veh, tire_radius)
 % Code to plot simulation results from ssc_hydromech_power_split_cvt
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 figString = ['h1_' mfilename];
 % Only create a figure if no figure exists

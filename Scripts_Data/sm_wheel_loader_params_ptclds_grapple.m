@@ -1,7 +1,7 @@
 function grapple_ptcld = sm_wheel_loader_params_ptclds_grapple()
 % Function to create point cloud for wheel loader grapple
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 % Point cloud on GrappleRake single tooth 
 % Extracted from CAD geometry

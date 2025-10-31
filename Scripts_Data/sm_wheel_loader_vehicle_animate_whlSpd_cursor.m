@@ -1,6 +1,6 @@
 % Code to animate results from wheel loader model
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 sm_wheel_loader_plot1whlspd(simlog_sm_wheel_loader_vehicle,HMPST.Tire.Rad)
 axis([11 16.5 0 10])

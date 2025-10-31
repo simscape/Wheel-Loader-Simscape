@@ -1,6 +1,6 @@
 % Script to animate shaft speed
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 sm_cvt_power_split_pg_plot1speed(simlog_sm_cvt_power_split_pg,logsout_sm_cvt_power_split_pg,cvtPar)
 axis([0 25 -80 80])

@@ -12,7 +12,7 @@ function wPGOut = cvtGetCVTOutputSpeeds(wEng,wSun,Nr,x)
 %   wPGOut     1x4 vector of output shaft speed at end of each speed range
 %
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 % Extract input parameters to variables
 nTSun1     = x(1);

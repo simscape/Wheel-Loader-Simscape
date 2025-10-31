@@ -1,7 +1,7 @@
 function sm_wheel_loader_plot6linkagehydr(simlog_hydr)
 % Code to plot simulation results from sm_wheel_loader
 %
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 
 if(~isempty(find(strcmp(fieldnames(simlog_hydr),'Pump_Impl'), 1)))

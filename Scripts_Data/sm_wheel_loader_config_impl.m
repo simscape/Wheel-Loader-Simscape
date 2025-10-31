@@ -4,7 +4,7 @@ function sm_wheel_loader_config_impl(mdl,impl)
 %   mdl   Model name
 %   impl  Name of implement configuration
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 
 blkpth_veh = [mdl '/Wheel Loader'];

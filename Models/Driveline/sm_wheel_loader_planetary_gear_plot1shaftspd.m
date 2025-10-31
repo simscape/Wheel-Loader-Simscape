@@ -1,6 +1,6 @@
 % Code to plot simulation results from sm_wheel_loader_planetary_gear
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 %% Generate simulation results if they don't exist
 if ~exist('simlog_sm_wheel_loader_planetary_gear', 'var')

@@ -6,7 +6,7 @@
 % 
 % This example tests the planetary gear wheel hub in a simple test harness.
 %
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 %% Model
 %

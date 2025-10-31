@@ -17,7 +17,7 @@ function obj = cvtObjFunGearRatios4SpdsSwash(x, tgtVSpdRanges, nHSPumpMotor, ...
 %  Nr                    Number of teeth, planetary ring gear (all)
 %  tgtMaxSwash           Target max displacement ratio of pump swash plate (0-1)
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 % Correct number of teeth for 3 planets
 x = [x(1) 3*x(2:5)];

@@ -2,7 +2,7 @@ function sm_cvt_power_split_pg_4range_animate(HMPST,logsout_data,varargin)
 % sm_cvt_power_split_pg_4range_animate  Animate simulation results from 
 %                                       model sm_cvt_power_split_pg_4range.slx 
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 saveVideo    = false;
 videoSpeedup = 1;

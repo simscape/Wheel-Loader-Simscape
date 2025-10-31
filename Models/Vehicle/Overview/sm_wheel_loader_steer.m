@@ -7,7 +7,7 @@
 % This example models a wheel loader steering system with hydraulic actuation.
 %
 %
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 %% Model
 %

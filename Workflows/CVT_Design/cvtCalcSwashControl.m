@@ -20,7 +20,7 @@ function [swashCtrlIdeal, swashCtrlTable,ax_sw] = cvtCalcSwashControl(...
 %   pumpVolEff      Hydrostatic pump volumetric efficiency
 %   showplot        Set to 'plot' to plot swash control table
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 %% Calculate ratio (CVT output shaft/Vehicle Speed) (rpm/kmph)
 vWhl2CVTOut = 1/(3.6*rWhl*pi/30)*nGearCVTOut*nDiff*nFinalDrive;

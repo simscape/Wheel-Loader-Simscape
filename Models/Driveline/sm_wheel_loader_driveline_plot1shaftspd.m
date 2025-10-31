@@ -3,7 +3,7 @@
 %
 % The plot below shows the speeds of the input and output shafts.
 %
-% Copyright 2017-2024 The MathWorks, Inc.
+% Copyright 2017-2025 The MathWorks, Inc.
 
 % Generate simulation results
 mdl = 'sm_wheel_loader_driveline';

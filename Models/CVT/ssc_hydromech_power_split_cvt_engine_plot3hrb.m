@@ -1,7 +1,7 @@
 % Code to plot simulation results from ssc_hydromech_power_split_cvt_engine
 % Compares test with and without hydraulic regenerative braking (HRB)
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 %% Open model
 mdl = 'ssc_hydromech_power_split_cvt_engine';

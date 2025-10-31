@@ -2,7 +2,7 @@
 % actuation with operator commands.  This enables testing with ideal
 % actuators which use prescribed motion and run much faster.
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 %% Open model
 mdl = 'sm_wheel_loader_vehicle';

@@ -7,7 +7,7 @@
 % This example tests the driveline with a universal joint and a constant
 % velocity joint in a simple test harness
 %
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 %% Model
 %

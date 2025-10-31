@@ -1,7 +1,7 @@
 function sm_wheel_loader_plot7steerhydr(simlog)
 % Code to plot simulation results from sm_wheel_loader_steer
 %
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 if(~isempty(find(strcmp(fieldnames(simlog),'Pump_Steer'), 1)))
 

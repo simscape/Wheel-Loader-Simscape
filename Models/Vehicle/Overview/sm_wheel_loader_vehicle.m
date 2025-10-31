@@ -7,7 +7,7 @@
 % This example models a wheel loader actuation system, steering, linkage
 % with implement, drivetrain and chassis.  
 %
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 %% Model
 %

@@ -7,9 +7,9 @@ This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
       -->
 <title>Hydromechanical Power Split CVT with Engine</title>
-<meta name="generator" content="MATLAB 24.2">
+<meta name="generator" content="MATLAB 25.1">
 <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
-<meta name="DC.date" content="2025-01-03">
+<meta name="DC.date" content="2025-10-31">
 <meta name="DC.source" content="ssc_hydromech_power_split_cvt_engine.m">
 <style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
@@ -187,30 +187,30 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 </p>
 <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_09.png" alt=""> <h2 id="10">Simulation Results: Load Cycle, Power Split CVT</h2>
 <p>Run load cycle with the power split CVT.</p>
-<pre class="codeoutput">Elapsed Sim Time = 18.6791
+<pre class="codeoutput">Elapsed Sim Time = 21.9101
 </pre>
 <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_10.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_11.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_12.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_13.png" alt=""> <h2 id="11">Simulation Results: Load Cycle, Abstract CVT</h2>
 <p>Run load cycle with the abstract split CVT.</p>
-<pre class="codeoutput">Elapsed Sim Time = 1.9031
+<pre class="codeoutput">Elapsed Sim Time = 2.4697
 </pre>
 <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_14.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_15.png" alt=""> <h2 id="13">Simulation Results: Accelerate and Decelerate, Hydrostatic CVT</h2>
 <p>Run load cycle with the hydrostatic CVT.</p>
-<pre class="codeoutput">Elapsed Sim Time = 2.8252
+<pre class="codeoutput">Elapsed Sim Time = 3.4624
 </pre>
 <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_16.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_17.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_18.png" alt=""> <h2 id="15">Simulation Results: Accelerate and Decelerate, Electrical CVT</h2>
 <p>Run load cycle with the electrical CVT.</p>
-<pre class="codeoutput">Elapsed Sim Time = 1.9496
+<pre class="codeoutput">Elapsed Sim Time = 2.4845
 </pre>
 <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_19.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_20.png" alt=""> <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_21.png" alt=""> <h2 id="17">Comparison of CVT Models</h2>
 <p>The following plot compares the input torque for tests with the power split CVT and the abstract CVT models. This load cycle has long periods of time where the loader is not moving. During periods when the loader is standing still, the power split CVT has higher losses because the hydrostatic transmission and other shafts are spinning.</p>
 <img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_22.png" alt=""> <h2 id="18">Explore Effect of Hydraulic Regenerative Braking</h2>
 <p>The following plot compares a test with and without the hydraulic regenerative braking (HRB) system. The HRB stores energy in an accumulator during braking events, and releases that energy to accelerate the vehicle. This system increases the efficiency of the vehicle and reduces the demand on the engine.</p>
 <p>The plot below shows an acceleration and deceleration profile. During the acceleration phase (between 11 and 12 seconds), the engine needs to provide more power if the HRB is disabled. During the deceleration phase, the sign of the HRB power is negative indicating energy is being stored in the HRB.</p>
-<pre class="codeoutput">Elapsed Sim Time = 18.7591
-Elapsed Sim Time = 18.2648
+<pre class="codeoutput">Elapsed Sim Time = 21.1926
+Elapsed Sim Time = 22.8955
 </pre>
-<img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_23.png" alt=""> <p class="footer">Copyright 2023-2024 The MathWorks, Inc.<br>
-<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024b</a>
+<img vspace="5" hspace="5" src="ssc_hydromech_power_split_cvt_engine_23.png" alt=""> <p class="footer">Copyright 2023-2025 The MathWorks, Inc.<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2025a</a>
 <br>
 </p>
 </div>
@@ -229,7 +229,7 @@ Elapsed Sim Time = 18.2648
 %
 % (<matlab:web('Wheel_Loader_Design_Overview.html') return to Wheel Loader Design with Simscape Overview>)
 %
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 %% Model
 %

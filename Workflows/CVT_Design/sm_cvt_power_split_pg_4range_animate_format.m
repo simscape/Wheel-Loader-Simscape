@@ -1,5 +1,5 @@
 function sm_cvt_power_split_pg_4range_animate_format(ax_sw)
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 % Adjustments for video
 ax_sw.YLabel.Units           = 'normalized';

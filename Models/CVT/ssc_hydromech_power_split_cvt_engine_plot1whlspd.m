@@ -1,6 +1,6 @@
 % Code to plot simulation results from ssc_hydromech_power_split_cvt
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 %% Generate simulation results if they don't exist
 if ~exist('simlog_ssc_hydromech_power_split_cvt', 'var')

@@ -1,7 +1,7 @@
 % Script to run (instead of edit) CVT design app
 % and ensure only one copy of the UI is opened.
 
-% Copyright 2019-2024 The MathWorks, Inc.
+% Copyright 2019-2025 The MathWorks, Inc.
 
 if(exist('CVT_Calculate_Swash_Control_app_uifigure','var'))
     if(~isempty(CVT_Calculate_Swash_Control_app_uifigure))

@@ -1,6 +1,6 @@
 function ptCldTires = sm_wheel_loader_params_ptclds_tire(varargin)
 % Script to generate point clouds from tire CAD geometry.
-% Copyright 2021-2024 The MathWorks, Inc
+% Copyright 2021-2025 The MathWorks, Inc
 
 if (nargin==0)
     showplot = 'n';

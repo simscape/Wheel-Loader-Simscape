@@ -12,7 +12,7 @@
 % Return to main example <matlab:web('Wheel_Loader_Design_Overview.html');
 % Wheel Loader Design with Simscape™>
 %
-% Copyright 2021-2024 The MathWorks, Inc
+% Copyright 2021-2025 The MathWorks, Inc
 
 %% Read in the STL file, Plot Mesh
 %

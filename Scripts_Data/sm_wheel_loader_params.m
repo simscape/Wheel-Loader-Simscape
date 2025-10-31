@@ -1,6 +1,6 @@
 % Load parameters for wheel loader model
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 % Stop time for load cycle
 stopTime = 70;

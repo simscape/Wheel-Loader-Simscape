@@ -9,7 +9,7 @@
 % with an ideal actuator or a hydraulic network. 
 %
 %
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 %% Model
 %

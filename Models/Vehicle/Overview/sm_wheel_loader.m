@@ -11,7 +11,7 @@
 % Simscape.  The control systems are modeled in Simulink.  A bucket or a
 % grapple can be attached to the linkage.
 %
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 %% Model
 %

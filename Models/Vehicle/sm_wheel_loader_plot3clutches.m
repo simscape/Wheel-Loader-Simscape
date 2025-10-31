@@ -1,7 +1,7 @@
 function sm_wheel_loader_plot3clutches(simlog_trans)
 % Code to plot simulation results from sm_wheel_loader
 
-% Copyright 2020-2024 The MathWorks, Inc.
+% Copyright 2020-2025 The MathWorks, Inc.
 
 %% Plot results
 if(~isempty(find(strcmp(fieldnames(simlog_trans),'Power_Split_Hydromech'))))
