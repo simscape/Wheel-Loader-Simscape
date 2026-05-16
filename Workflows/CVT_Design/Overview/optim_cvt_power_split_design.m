@@ -17,7 +17,7 @@
 % Return to main example <matlab:web('Wheel_Loader_Design_Overview.html');
 % Wheel Loader Design with Simscape™>
 %
-% Copyright 2021-2025 The MathWorks, Inc
+% Copyright 2021-2026 The MathWorks, Inc
 
 
 %% Define CVT Parameters and Design Criteria
